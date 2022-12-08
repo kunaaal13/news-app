@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import LiveTimestamp from '../LiveTimestamp'
 
 type Props = {
   searchParams?: Article
@@ -35,7 +36,9 @@ function ArticlePage({ searchParams }: Props) {
 
             <h2 className='font-bold pl-4'>Source: {article.source}</h2>
 
-            <h2 className='pl-4'>{article.published_at}</h2>
+            <h2 className='pl-4'>
+              <LiveTimestamp time={article.published_at} />
+            </h2>
           </div>
 
           <p className='pt-4'>{article.description}</p>
