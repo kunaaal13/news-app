@@ -1,9 +1,16 @@
-import React from 'react'
+import { categories } from '../constants'
+import fetchNews from '../lib/fetchNews'
+import NewsList from './NewsList'
+import response from '../response.json'
 
-function Homepage() {
+async function Homepage() {
+  // fetch news data
+  const news: NewsResponse = response || (await fetchNews(categories.join(',')))
+  console.log(news)
+
   return (
     <div>
-      <h1 className='text-2xl'>hello</h1>
+      <NewsList news={news} />
     </div>
   )
 }
